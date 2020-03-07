@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+
+<div class="ui main container raised segment">
+  <div class="ui huge header">Add Book</div>
+  <form action="/books" method="POST" class="ui form">
+    <div class="field">
+      <label for="title">Book Title</label>
+      <input
+        type="text"
+        name="book[title]"
+        placeholder="Title"
+        autocomplete="off"
+      />
+    </div>
+    <div class="field">
+      <label for="autor">Author</label>
+      <input
+        type="text"
+        name="book[author]"
+        placeholder="Author"
+        autocomplete="off"
+      />
+    </div>
+    <div class="field">
+      <label for="description">Description</label>
+      <textarea name="book[description]" id="" cols="30" rows="10"></textarea>
+    </div>
+    <div class="field">
+      <label for="image">Book Image URL</label>
+      <input
+        type="text"
+        name="book[image]"
+        placeholder="URL"
+        autocomplete="off"
+      />
+    </div>
+    <input type="submit" class="ui basic blue button" />
+  </form>
+</div>
+
+<%- include('partials/footer') %>

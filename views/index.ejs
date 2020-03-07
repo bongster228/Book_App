@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+<div class="ui main text container">
+  <div class="ui huge header">Book List</div>
+  <div class="ui link cards">
+    <% books.map(book =>{ %>
+    <div class="card">
+      <div class="image">
+        <img src="<%= book.image %>" alt="" />
+      </div>
+      <div class="content">
+        <a class="header" href="">
+          <%= book.title %>
+        </a>
+        <div class="meta">
+          <span class="date">Posted Date: <%= book.date.toDateString() %></span>
+        </div>
+        <div class="description">
+          <%= book.description.substring(0, 150) %>...
+        </div>
+        <div class="extra content">
+          <a href="">
+            <i class="user icon"></i>
+            <%= book.author %>
+          </a>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>
+<%- include('partials/footer') %>
