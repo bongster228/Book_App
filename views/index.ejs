@@ -9,7 +9,7 @@
         <img src="<%= book.image %>" alt="" />
       </div>
       <div class="content">
-        <a class="header" href="">
+        <a class="header" href="/books/<%= book._id %>">
           <%= book.title %>
         </a>
         <div class="meta">
@@ -19,7 +19,7 @@
           <%= book.description.substring(0, 150) %>...
         </div>
         <div class="extra content">
-          <a href="">
+          <a href="/book/<%= book._id %>">
             <i class="user icon"></i>
             <%= book.author %>
           </a>

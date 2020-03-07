@@ -60,8 +60,27 @@ app.get('/books/new', (req, res) => {
 
 // CREATE ROUTE
 app.post('/books', (req, res) => {
-  console.log('post sent');
-  res.redirect('/books');
+  const { book } = req.body;
+  Book.create(book, (err, newBook) => {
+    if (err) {
+      res.render('new');
+    } else {
+      res.redirect('/books');
+    }
+  });
+});
+
+// SHOW ROUTE
+app.get('/books/:id', (req, res) => {
+  const { id } = req.params;
+
+  Book.findById(id, (err, foundBook) => {
+    if (err) {
+      res.redirect('/books');
+    } else {
+      res.render(`show`, { book: foundBook });
+    }
+  });
 });
 
 app.listen(PORT, () => {
