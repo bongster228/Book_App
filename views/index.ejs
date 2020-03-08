@@ -1,5 +1,6 @@
 <%- include('partials/header') %>
 
+<!-- Loop through and render each book as cards -->
 <div class="ui main text container">
   <div class="ui huge header">Book List</div>
   <div class="ui link cards">
@@ -16,10 +17,10 @@
           <span class="date">Posted Date: <%= book.date.toDateString() %></span>
         </div>
         <div class="description">
-          <%= book.description.substring(0, 150) %>...
+          <%- book.description.substring(0, 150) %>...
         </div>
         <div class="extra content">
-          <a href="/book/<%= book._id %>">
+          <a href="/books/<%= book._id %>">
             <i class="user icon"></i>
             <%= book.author %>
           </a>

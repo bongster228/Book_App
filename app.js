@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const express = require('express');
+const methodOverride = require('method-override');
 const PORT = 5000;
 const app = express();
 
@@ -7,6 +8,7 @@ const bodyParser = require('body-parser');
 
 // APP CONFIG
 app.set('view engine', 'ejs');
+app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -79,6 +81,19 @@ app.get('/books/:id', (req, res) => {
       res.redirect('/books');
     } else {
       res.render(`show`, { book: foundBook });
+    }
+  });
+});
+
+// DELETE ROUTE
+app.delete('/books/:id', (req, res) => {
+  const { id } = req.params;
+
+  Book.findByIdAndDelete(id, err => {
+    if (err) {
+      res.redirect(`/books/${id}`);
+    } else {
+      res.redirect('/books');
     }
   });
 });
