@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+
+<!-- Form used to post a new book -->
+<div class="ui main container raised segment">
+  <div class="ui huge header">Edit Book</div>
+  <form
+    action="/books/<%= book._id %>?_method=PUT"
+    method="POST"
+    class="ui form"
+  >
+    <div class="field">
+      <label for="title">Book Title</label>
+      <input
+        type="text"
+        name="book[title]"
+        placeholder="Title"
+        autocomplete="off"
+        value="<%= book.title %>"
+      />
+    </div>
+    <div class="field">
+      <label for="autor">Author</label>
+      <input
+        type="text"
+        name="book[author]"
+        placeholder="Author"
+        autocomplete="off"
+        value="<%= book.author %>"
+      />
+    </div>
+    <div class="field">
+      <label for="description">Description</label>
+      <textarea name="book[description]" id="" cols="30" rows="10">
+          <%= book.description %> 
+      </textarea>
+    </div>
+    <div class="field">
+      <label for="image">Book Image URL</label>
+      <input
+        type="text"
+        name="book[image]"
+        placeholder="URL"
+        autocomplete="off"
+        value="<%= book.image %>"
+      />
+    </div>
+    <input type="submit" class="ui basic blue button" />
+  </form>
+</div>
+
+<%- include('partials/footer') %>

@@ -5,3 +5,11 @@
 .showPage {
   font-size: 1.5em;
 }
+
+form.editForm {
+  display: inline !important;
+}
+
+form.deleteForm {
+  display: inline !important;
+}

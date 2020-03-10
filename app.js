@@ -85,6 +85,35 @@ app.get('/books/:id', (req, res) => {
   });
 });
 
+// EDIT ROUTE
+app.get('/books/:id/edit', (req, res) => {
+  const { id } = req.params;
+
+  Book.findById(id, (err, foundBook) => {
+    if (err) {
+      res.redirect(`/books/${id}`);
+    } else {
+      res.render('edit', { book: foundBook });
+    }
+  });
+});
+
+// UPDATE ROUTE
+app.put('/books/:id', (req, res) => {
+  const { id } = req.params;
+  // Reqest gets made with updated book
+  const { book } = req.body;
+
+  // Find by id and update the stored book with updatedBook
+  Book.findByIdAndUpdate(id, book, (err, foundBook) => {
+    if (err) {
+      res.redirect(`/books/${id}/edit`);
+    } else {
+      res.redirect(`/books/${id}`);
+    }
+  });
+});
+
 // DELETE ROUTE
 app.delete('/books/:id', (req, res) => {
   const { id } = req.params;

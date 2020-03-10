@@ -5,8 +5,20 @@
     <div class="item">
       <div class="image">
         <img src="<%= book.image %>" alt="" />
-        <form method="POST" action="/books/<%= book._id %>?_method=DELETE">
+
+        <form
+          class="deleteForm"
+          method="POST"
+          action="/books/<%= book._id %>?_method=DELETE"
+        >
           <button class="ui red basic button">Delete</button>
+        </form>
+        <form
+          class="editForm"
+          method="GET"
+          action="/books/<%= book._id %>/edit"
+        >
+          <button class="ui orange basic button">Edit</button>
         </form>
       </div>
       <div class="content">
